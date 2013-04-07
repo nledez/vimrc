@@ -47,7 +47,7 @@ Bundle 'https://github.com/tpope/vim-markdown.git'
 " Bundle 'https://github.com/myhere/vim-nodejs-complete.git'
 Bundle 'https://github.com/vim-ruby/vim-ruby.git'
 Bundle 'https://github.com/tpope/vim-rails.git'
-Bundle 'https://github.com/tpope/vim-bundler.git'
+" Bundle 'https://github.com/tpope/vim-bundler.git'
 
 " Autoclose
 " --------------------------------------------

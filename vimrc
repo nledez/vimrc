@@ -84,6 +84,20 @@ let g:ctrlp_clear_cache_on_exit = 1
 "source ~/.vim/bindings.vim
 "source ~/.vim/plugins.vim
 
+" So what, I can't type...
+nmap :W :w
+nmap :X :x
+nmap :Q :q
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+	" When editing a file, always jump to the last known cursor position.
+	autocmd BufReadPost *
+		\ if line("'\"") > 0 && line("'\"") <= line("$") |
+		\   exe "normal g`\"" |
+		\ endif
+endif " has("autocmd")"
+
 if filereadable(expand("~/.vim_local"))
   source ~/.vim_local
 endif

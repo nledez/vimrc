@@ -8,17 +8,18 @@ call vundle#rc()
 " required!
 Bundle 'gmarik/vundle'
 
-" My Bundles here:
-"
+filetype plugin indent on     " required!
+syntax enable
 
 " Powerline
 " --------------------------------------------
-"Bundle 'https://github.com/Lokaltog/vim-powerline'
+Bundle 'https://github.com/Lokaltog/vim-powerline'
 
 set laststatus=2
 set encoding=utf-8
 set t_Co=256
-let g:Powerline_symbols = 'fancy'
+" let g:Powerline_symbols = 'fancy'
+" let g:Powerline_symbols = 'unicode'
 
 " Git
 " --------------------------------------------
@@ -26,9 +27,9 @@ Bundle 'tpope/vim-fugitive'
 
 " Color / GUI
 " --------------------------------------------
-Bundle 'molokai'
+Bundle 'https://github.com/tomasr/molokai.git'
 
-set guifont=Monaco:h12
+" set guifont=Monaco:h12
 set background=dark 
 colors molokai
 set cursorline        " highlight current line
@@ -74,11 +75,30 @@ let g:ctrlp_clear_cache_on_exit = 1
 "Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 "let g:NumberToggleTrigger="<F3>"
 
+"" Supertab
+" --------------------------------------------
 "Bundle 'https://github.com/ervandew/supertab.git'
 "inoremap <expr> <Esc>  pumvisible() ? "\<C-e>" : "\<Esc>"
 """ inoremap <expr> <CR>   pumvisible() ? "\<C-y>" : "\<CR>"
 "inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
 "inoremap <expr> <Up>   pumvisible() ? "\<C-p>" : "\<Up>"
+
+" Matchit
+" --------------------------------------------
+Bundle 'https://github.com/tsaleh/vim-matchit.git'
+
+" Vim-ruby
+" --------------------------------------------
+Bundle 'https://github.com/vim-ruby/vim-ruby'
+Bundle 'https://github.com/ecomba/vim-ruby-refactoring.git'
+Bundle 'https://github.com/tpope/vim-cucumber.git'
+Bundle 'https://github.com/tpope/vim-haml.git'
+Bundle 'https://github.com/tpope/vim-endwise.git'
+
+" Vim-rails
+" --------------------------------------------
+Bundle 'https://github.com/tpope/vim-rails'
+Bundle 'https://github.com/tpope/vim-bundler.git'
 
 "source ~/.vim/global.vim
 "source ~/.vim/bindings.vim
@@ -102,9 +122,7 @@ if filereadable(expand("~/.vim_local"))
   source ~/.vim_local
 endif
 
-filetype plugin indent on     " required!
-filetype on
-"
+
 " Brief help
 " :BundleList          - list configured bundles
 " :BundleInstall(!)    - install(update) bundles

@@ -123,6 +123,14 @@ if filereadable(expand("~/.vim_local"))
   source ~/.vim_local
 endif
 
+syntax on
+filetype on
+filetype indent on
+filetype plugin on
+autocmd FileType ruby
+	\ set expandtab |
+	\ set tabstop=2 shiftwidth=2 softtabstop=2 |
+	\ set autoindent
 
 " Brief help
 " :BundleList          - list configured bundles

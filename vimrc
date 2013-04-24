@@ -98,7 +98,7 @@ Bundle 'https://github.com/tpope/vim-endwise.git'
 " Vim-rails
 " --------------------------------------------
 Bundle 'https://github.com/tpope/vim-rails'
-Bundle 'https://github.com/tpope/vim-bundler.git'
+" Bundle 'https://github.com/tpope/vim-bundler.git'
 
 "source ~/.vim/global.vim
 "source ~/.vim/bindings.vim

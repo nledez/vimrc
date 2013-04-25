@@ -105,6 +105,13 @@ Bundle 'https://github.com/skwp/vim-rspec.git'
 "source ~/.vim/bindings.vim
 "source ~/.vim/plugins.vim
 
+" Other config
+" --------------------------------------------
+set langmenu=en_US.UTF-8    " sets the language of the menu (gvim)
+let $LANG = 'en_US'
+
+set number
+
 " So what, I can't type...
 nmap :W :w
 nmap :X :x

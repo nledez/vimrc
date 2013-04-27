@@ -62,6 +62,10 @@ Bundle 'https://github.com/majutsushi/tagbar.git'
 " --------------------------------------------
 Bundle 'https://github.com/godlygeek/tabular.git'
 
+" Ack
+" --------------------------------------------
+Bundle 'https://github.com/mileszs/ack.vim.git'
+
 
 " Ctrl P 
 " --------------------------------------------

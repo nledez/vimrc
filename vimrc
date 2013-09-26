@@ -13,7 +13,7 @@ syntax enable
 
 " Powerline
 " --------------------------------------------
-Bundle 'https://github.com/Lokaltog/vim-powerline'
+Bundle 'Lokaltog/vim-powerline'
 
 set laststatus=2
 set encoding=utf-8
@@ -27,7 +27,7 @@ Bundle 'tpope/vim-fugitive'
 
 " Color / GUI
 " --------------------------------------------
-Bundle 'https://github.com/tomasr/molokai.git'
+Bundle 'tomasr/molokai'
 
 " set guifont=Monaco:h12
 set background=dark 
@@ -43,28 +43,29 @@ let g:syntastic_check_on_open=1
 
 " Syntax
 " --------------------------------------------
-Bundle 'https://github.com/tpope/vim-markdown.git'
-" Bundle 'https://github.com/guileen/vim-node.git'
-" Bundle 'https://github.com/myhere/vim-nodejs-complete.git'
-Bundle 'https://github.com/vim-ruby/vim-ruby.git'
-Bundle 'https://github.com/tpope/vim-rails.git'
-" Bundle 'https://github.com/tpope/vim-bundler.git'
+Bundle 'tpope/vim-markdown'
+" Bundle 'guileen/vim-node'
+" Bundle 'myhere/vim-nodejs-complete'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails'
+" Bundle 'tpope/vim-bundler'
+Bundle 'elzr/vim-json'
 
 " Autoclose
 " --------------------------------------------
-Bundle 'https://github.com/Raimondi/delimitMate.git'
+Bundle 'Raimondi/delimitMate'
 
 " TagBar to see classes
 " --------------------------------------------
-Bundle 'https://github.com/majutsushi/tagbar.git'
+Bundle 'majutsushi/tagbar'
 
 " Tabulations 
 " --------------------------------------------
-Bundle 'https://github.com/godlygeek/tabular.git'
+Bundle 'godlygeek/tabular'
 
 " Ack
 " --------------------------------------------
-Bundle 'https://github.com/mileszs/ack.vim.git'
+Bundle 'mileszs/ack.vim'
 
 
 " Ctrl P 
@@ -81,7 +82,7 @@ let g:ctrlp_clear_cache_on_exit = 1
 
 "" Supertab
 " --------------------------------------------
-"Bundle 'https://github.com/ervandew/supertab.git'
+"Bundle 'ervandew/supertab'
 "inoremap <expr> <Esc>  pumvisible() ? "\<C-e>" : "\<Esc>"
 """ inoremap <expr> <CR>   pumvisible() ? "\<C-y>" : "\<CR>"
 "inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
@@ -89,21 +90,26 @@ let g:ctrlp_clear_cache_on_exit = 1
 
 " Matchit
 " --------------------------------------------
-Bundle 'https://github.com/tsaleh/vim-matchit.git'
+Bundle 'tsaleh/vim-matchit'
 
 " Vim-ruby
 " --------------------------------------------
-Bundle 'https://github.com/vim-ruby/vim-ruby'
-Bundle 'https://github.com/ecomba/vim-ruby-refactoring.git'
-Bundle 'https://github.com/tpope/vim-cucumber.git'
-Bundle 'https://github.com/tpope/vim-haml.git'
-Bundle 'https://github.com/tpope/vim-endwise.git'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'ecomba/vim-ruby-refactoring'
+Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-rbenv'
 
 " Vim-rails
 " --------------------------------------------
-Bundle 'https://github.com/tpope/vim-rails'
-Bundle 'https://github.com/skwp/vim-rspec.git'
-" Bundle 'https://github.com/tpope/vim-bundler.git'
+Bundle 'tpope/vim-rails'
+Bundle 'skwp/vim-rspec'
+" Bundle 'tpope/vim-bundler'
+
+" Vim-surround
+" --------------------------------------------
+Bundle 'tpope/vim-surround'
 
 "source ~/.vim/global.vim
 "source ~/.vim/bindings.vim
@@ -143,6 +149,8 @@ autocmd FileType ruby
 	\ set tabstop=2 shiftwidth=2 softtabstop=2 |
 	\ set autoindent
 
+au BufRead,BufNewFile *.json set filetype=json
+
 " Brief help
 " :BundleList          - list configured bundles
 " :BundleInstall(!)    - install(update) bundles
@@ -151,3 +159,39 @@ autocmd FileType ruby
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed..
+
+" .vimrc.after is loaded after the plugins have loaded
+:nmap \l :setlocal number!<CR>
+:nmap \o :set paste!<CR>"
+
+:set incsearch
+:set ignorecase
+:set smartcase
+:set hlsearch
+:nmap \q :nohlsearch<CR>
+
+:nmap ; :CtrlPBuffer<CR>
+
+":let g:ctrlp_map = '<Leader>t'
+":let g:ctrlp_match_window_bottom = 0
+":let g:ctrlp_match_window_reversed = 0
+:let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+:let g:ctrlp_working_path_mode = 0
+:let g:ctrlp_dotfiles = 0
+:let g:ctrlp_switch_buffer = 0
+
+" Les touches fléchées sont désactivées.
+" Utile pour apprendre vim.
+"
+" En mode normal, vous pourrez les utiliser plus tard
+" pour faire quelque chose d'utile.
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+" En mode insertion, vous pourrez enlever la
+" désactivation dans quelques semaines.
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>

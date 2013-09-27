@@ -37,6 +37,12 @@ nnoremap <silent> <leader>ge :Gedit<CR>
 nnoremap <silent> <leader>gg :GitGutterToggle<CR>
 "}
 
+" EasyMotion
+" --------------------------------------------
+Bundle 'Lokaltog/vim-easymotion'
+" EasyMotion {
+"}
+
 " Color / GUI
 " --------------------------------------------
 Bundle 'tomasr/molokai'

@@ -43,6 +43,12 @@ Bundle 'Lokaltog/vim-easymotion'
 " EasyMotion {
 "}
 
+" Vim-Latex
+" --------------------------------------------
+Bundle 'jcf/vim-latex'
+" Vim-Latex {
+"}
+
 " Color / GUI
 " --------------------------------------------
 Bundle 'tomasr/molokai'
@@ -213,3 +219,11 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+
+" Source the vimrc file after saving it
+if has("autocmd")
+  autocmd bufwritepost .vimrc source $MYVIMRC
+endif
+
+let mapleader = ","
+nmap <leader>v :tabedit $MYVIMRC<CR>

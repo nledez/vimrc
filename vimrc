@@ -6,14 +6,14 @@ call vundle#rc()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Bundle 'https://github.com/gmarik/vundle.git'
 
 filetype plugin indent on     " required!
 syntax enable
 
 " Powerline
 " --------------------------------------------
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'https://github.com/Lokaltog/vim-powerline.git'
 
 set laststatus=2
 set encoding=utf-8
@@ -23,7 +23,7 @@ set t_Co=256
 
 " Git
 " --------------------------------------------
-Bundle 'tpope/vim-fugitive' 
+Bundle 'https://github.com/tpope/vim-fugitive.git'
 " Fugitive {
 nnoremap <silent> <leader>gs :Gstatus<CR>
 nnoremap <silent> <leader>gd :Gdiff<CR>
@@ -39,74 +39,77 @@ nnoremap <silent> <leader>gg :GitGutterToggle<CR>
 
 " EasyMotion
 " --------------------------------------------
-Bundle 'Lokaltog/vim-easymotion'
+Bundle 'https://github.com/Lokaltog/vim-easymotion.git'
 " EasyMotion {
 "}
 
 " Vim-Latex
 " --------------------------------------------
-Bundle 'jcf/vim-latex'
+Bundle 'https://github.com/jcf/vim-latex.git'
 " Vim-Latex {
 "}
 
 " Color / GUI
 " --------------------------------------------
-Bundle 'tomasr/molokai'
+Bundle 'https://github.com/tomasr/molokai.git'
+"colors molokai
+"Bundle 'https://github.com/nanotech/jellybeans.git'
+Bundle 'https://github.com/nanotech/jellybeans.vim.git'
+colors jellybeans
 
 " set guifont=Monaco:h12
-set background=dark 
-colors molokai
+set background=dark
 set cursorline        " highlight current line
 highlight CursorLine          guibg=#003853 ctermbg=24  gui=none cterm=none
 
 
 " Syntax checker
 " --------------------------------------------
-Bundle 'scrooloose/syntastic',
+Bundle 'https://github.com/scrooloose/syntastic.git',
 let g:syntastic_check_on_open=1
 
 " Syntax
 " --------------------------------------------
-Bundle 'tpope/vim-markdown'
-" Bundle 'guileen/vim-node'
-" Bundle 'myhere/vim-nodejs-complete'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-" Bundle 'tpope/vim-bundler'
-Bundle 'elzr/vim-json'
+Bundle 'https://github.com/tpope/vim-markdown.git'
+" Bundle 'https://github.com/guileen/vim-node.git'
+" Bundle 'https://github.com/myhere/vim-nodejs-complete.git'
+Bundle 'https://github.com/vim-ruby/vim-ruby.git'
+Bundle 'https://github.com/tpope/vim-rails.git'
+" Bundle 'https://github.com/tpope/vim-bundler.git'
+Bundle 'https://github.com/elzr/vim-json.git'
 
 " Autoclose
 " --------------------------------------------
-Bundle 'Raimondi/delimitMate'
+Bundle 'https://github.com/Raimondi/delimitMate.git'
 
 " TagBar to see classes
 " --------------------------------------------
-Bundle 'majutsushi/tagbar'
+Bundle 'https://github.com/majutsushi/tagbar.git'
 
-" Tabulations 
+" Tabulations
 " --------------------------------------------
-Bundle 'godlygeek/tabular'
+Bundle 'https://github.com/godlygeek/tabular.git'
 
 " Ack
 " --------------------------------------------
-Bundle 'mileszs/ack.vim'
+Bundle 'https://github.com/mileszs/ack.vim.git'
 
 
-" Ctrl P 
+" Ctrl P
 " --------------------------------------------
-Bundle 'kien/ctrlp.vim'
+Bundle 'https://github.com/kien/ctrlp.vim.git'
 let g:ctrlp_max_height = 25
 let g:ctrlp_max_files = 90000
 let g:ctrlp_clear_cache_on_exit = 1
 
 " Line Number
 " --------------------------------------------
-"Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+"Bundle 'https://github.com/jeffkreeftmeijer/vim-numbertoggle.git'
 "let g:NumberToggleTrigger="<F3>"
 
 "" Supertab
 " --------------------------------------------
-"Bundle 'ervandew/supertab'
+"Bundle 'https://github.com/ervandew/supertab.git'
 "inoremap <expr> <Esc>  pumvisible() ? "\<C-e>" : "\<Esc>"
 """ inoremap <expr> <CR>   pumvisible() ? "\<C-y>" : "\<CR>"
 "inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
@@ -114,26 +117,26 @@ let g:ctrlp_clear_cache_on_exit = 1
 
 " Matchit
 " --------------------------------------------
-Bundle 'tsaleh/vim-matchit'
+Bundle 'https://github.com/tsaleh/vim-matchit.git'
 
 " Vim-ruby
 " --------------------------------------------
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'ecomba/vim-ruby-refactoring'
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-rbenv'
+Bundle 'https://github.com/vim-ruby/vim-ruby.git'
+Bundle 'https://github.com/ecomba/vim-ruby-refactoring.git'
+Bundle 'https://github.com/tpope/vim-cucumber.git'
+Bundle 'https://github.com/tpope/vim-haml.git'
+Bundle 'https://github.com/tpope/vim-endwise.git'
+Bundle 'https://github.com/tpope/vim-rbenv.git'
 
 " Vim-rails
 " --------------------------------------------
-Bundle 'tpope/vim-rails'
-Bundle 'skwp/vim-rspec'
-" Bundle 'tpope/vim-bundler'
+Bundle 'https://github.com/tpope/vim-rails.git'
+Bundle 'https://github.com/skwp/vim-rspec.git'
+" Bundle 'https://github.com/tpope/vim-bundler.git'
 
 " Vim-surround
 " --------------------------------------------
-Bundle 'tpope/vim-surround'
+Bundle 'https://github.com/tpope/vim-surround.git'
 
 "source ~/.vim/global.vim
 "source ~/.vim/bindings.vim

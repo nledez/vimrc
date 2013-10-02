@@ -54,6 +54,19 @@ Bundle 'https://github.com/jcf/vim-latex.git'
 Bundle 'https://github.com/tejr/vim-nagios.git'
 " Vim-Nagios {
 "}
+"
+
+" Vim-Varnish
+" --------------------------------------------
+Bundle 'https://github.com/empanda/vim-varnish.git'
+" Vim-Varnish {
+"}
+
+" Vim-Nginx
+" --------------------------------------------
+Bundle 'https://github.com/evanmiller/nginx-vim-syntax.git'
+" Vim-Nginx {
+"}
 
 " Color / GUI
 " --------------------------------------------

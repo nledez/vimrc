@@ -49,6 +49,12 @@ Bundle 'https://github.com/jcf/vim-latex.git'
 " Vim-Latex {
 "}
 
+" Vim-Nagios
+" --------------------------------------------
+Bundle 'https://github.com/tejr/vim-nagios.git'
+" Vim-Nagios {
+"}
+
 " Color / GUI
 " --------------------------------------------
 Bundle 'https://github.com/tomasr/molokai.git'

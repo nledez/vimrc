@@ -66,6 +66,7 @@ Bundle 'https://github.com/empanda/vim-varnish.git'
 " --------------------------------------------
 Bundle 'https://github.com/evanmiller/nginx-vim-syntax.git'
 " Vim-Nginx {
+au BufRead,BufNewFile */etc/nginx/** set ft=nginx
 "}
 
 " Color / GUI

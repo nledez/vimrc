@@ -69,6 +69,13 @@ Bundle 'https://github.com/evanmiller/nginx-vim-syntax.git'
 au BufRead,BufNewFile */etc/nginx/** set ft=nginx
 "}
 
+" Vim-Shorewall
+" --------------------------------------------
+Bundle 'https://github.com/vim-scripts/shorewall.vim.git'
+" Vim-Shorewall {
+au BufRead,BufNewFile */etc/shorewall/** set ft=shorewall
+"}
+
 " Color / GUI
 " --------------------------------------------
 Bundle 'https://github.com/tomasr/molokai.git'

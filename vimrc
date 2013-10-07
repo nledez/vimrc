@@ -47,6 +47,10 @@ Bundle 'https://github.com/Lokaltog/vim-easymotion.git'
 " --------------------------------------------
 Bundle 'https://github.com/jcf/vim-latex.git'
 " Vim-Latex {
+imap <buffer> <leader>it <Plug>Tex_InsertItemOnThisLine
+imap <C-b> <Plug>Tex_MathBF
+imap <C-c> <Plug>Tex_MathCal
+imap <C-i> <Plug>Tex_InsertItemOnThisLine
 "}
 
 " Vim-Nagios

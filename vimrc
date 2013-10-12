@@ -108,6 +108,8 @@ Bundle 'https://github.com/vim-ruby/vim-ruby.git'
 Bundle 'https://github.com/tpope/vim-rails.git'
 " Bundle 'https://github.com/tpope/vim-bundler.git'
 Bundle 'https://github.com/elzr/vim-json.git'
+Bundle 'https://github.com/ngmy/vim-rubocop'
+Bundle 'https://github.com/mattboehm/vim-unstack'
 
 " Autoclose
 " --------------------------------------------

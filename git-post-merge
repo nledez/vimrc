@@ -1,2 +1,3 @@
 #!/bin/bash
-vim +BundleInstall +qall -T /dev/null
+echo 'Need to exec:'
+echo 'vim +BundleInstall +qall'

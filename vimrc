@@ -108,6 +108,7 @@ Bundle 'https://github.com/vim-ruby/vim-ruby.git'
 Bundle 'https://github.com/tpope/vim-rails.git'
 " Bundle 'https://github.com/tpope/vim-bundler.git'
 Bundle 'https://github.com/elzr/vim-json.git'
+Bundle 'kchmck/vim-coffee-script.git'
 if executable('rubocop')
 	Bundle 'https://github.com/ngmy/vim-rubocop'
 endif
@@ -150,6 +151,12 @@ let g:ctrlp_clear_cache_on_exit = 1
 "inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
 "inoremap <expr> <Up>   pumvisible() ? "\<C-p>" : "\<Up>"
 
+" TaskList
+" --------------------------------------------
+Bundle 'https://github.com/vim-scripts/TaskList.vim.git'
+Bundle 'https://github.com/samsonw/vim-task.git'
+autocmd BufNewFile,BufRead todo.txt,*.todo,*.task,*.tasks  setfiletype task
+
 " Matchit
 " --------------------------------------------
 Bundle 'https://github.com/tsaleh/vim-matchit.git'
@@ -172,6 +179,11 @@ Bundle 'https://github.com/skwp/vim-rspec.git'
 " Vim-surround
 " --------------------------------------------
 Bundle 'https://github.com/tpope/vim-surround.git'
+
+" NERD tree
+" --------------------------------------------
+Bundle 'https://github.com/scrooloose/nerdtree.git'
+:nmap \e :NERDTreeToggle<CR>
 
 "source ~/.vim/global.vim
 "source ~/.vim/bindings.vim
@@ -211,6 +223,10 @@ autocmd FileType ruby
 	\ set tabstop=2 shiftwidth=2 softtabstop=2 |
 	\ set autoindent
 
+au BufRead,BufNewFile Guardfile set filetype=ruby
+au BufRead,BufNewFile Berksfile set filetype=ruby
+
+au BufRead,BufNewFile *.coffee set filetype=coffee
 au BufRead,BufNewFile *.json set filetype=json
 
 " Brief help
@@ -257,6 +273,8 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+
+nnoremap <Space> za
 
 " Source the vimrc file after saving it
 if has("autocmd")

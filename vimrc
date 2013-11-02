@@ -45,12 +45,12 @@ Bundle 'https://github.com/Lokaltog/vim-easymotion.git'
 
 " Vim-Latex
 " --------------------------------------------
-Bundle 'https://github.com/jcf/vim-latex.git'
-" Vim-Latex {
-imap <buffer> <leader>it <Plug>Tex_InsertItemOnThisLine
-imap <C-b> <Plug>Tex_MathBF
-imap <C-c> <Plug>Tex_MathCal
-imap <C-i> <Plug>Tex_InsertItemOnThisLine
+" Bundle 'https://github.com/jcf/vim-latex.git'
+" " Vim-Latex {
+" imap <buffer> <leader>it <Plug>Tex_InsertItemOnThisLine
+" imap <C-b> <Plug>Tex_MathBF
+" imap <C-c> <Plug>Tex_MathCal
+" imap <C-i> <Plug>Tex_InsertItemOnThisLine
 "}
 
 " Vim-Nagios
@@ -108,6 +108,7 @@ Bundle 'https://github.com/vim-ruby/vim-ruby.git'
 Bundle 'https://github.com/tpope/vim-rails.git'
 " Bundle 'https://github.com/tpope/vim-bundler.git'
 Bundle 'https://github.com/elzr/vim-json.git'
+let g:vim_json_syntax_conceal = 0
 Bundle 'kchmck/vim-coffee-script.git'
 if executable('rubocop')
 	Bundle 'https://github.com/ngmy/vim-rubocop'
@@ -155,7 +156,11 @@ let g:ctrlp_clear_cache_on_exit = 1
 " --------------------------------------------
 Bundle 'https://github.com/vim-scripts/TaskList.vim.git'
 Bundle 'https://github.com/samsonw/vim-task.git'
-autocmd BufNewFile,BufRead todo.txt,*.todo,*.task,*.tasks  setfiletype task
+
+autocmd BufNewFile,BufRead todo.txt,*.todo,*.task,*.tasks  setfiletype task | call VimrcMapTaskListKey()
+function VimrcMapTaskListKey()
+	:nmap \d :call Toggle_task_status()<CR>
+endfunction
 
 " Matchit
 " --------------------------------------------
@@ -183,7 +188,7 @@ Bundle 'https://github.com/tpope/vim-surround.git'
 " NERD tree
 " --------------------------------------------
 Bundle 'https://github.com/scrooloose/nerdtree.git'
-:nmap \e :NERDTreeToggle<CR>
+nmap \e :NERDTreeToggle<CR>
 
 "source ~/.vim/global.vim
 "source ~/.vim/bindings.vim
@@ -239,24 +244,24 @@ au BufRead,BufNewFile *.json set filetype=json
 " NOTE: comments after Bundle command are not allowed..
 
 " .vimrc.after is loaded after the plugins have loaded
-:nmap \l :setlocal number!<CR>
-:nmap \o :set paste!<CR>"
+nmap \l :setlocal number!<CR>
+nmap \o :set paste!<CR>"
 
-:set incsearch
-:set ignorecase
-:set smartcase
-:set hlsearch
-:nmap \q :nohlsearch<CR>
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
+nmap \q :nohlsearch<CR>
 
-:nmap ; :CtrlPBuffer<CR>
+nmap ; :CtrlPBuffer<CR>
 
 ":let g:ctrlp_map = '<Leader>t'
 ":let g:ctrlp_match_window_bottom = 0
 ":let g:ctrlp_match_window_reversed = 0
-:let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
-:let g:ctrlp_working_path_mode = 0
-:let g:ctrlp_dotfiles = 0
-:let g:ctrlp_switch_buffer = 0
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
 
 " Les touches fléchées sont désactivées.
 " Utile pour apprendre vim.
@@ -283,3 +288,15 @@ endif
 
 let mapleader = ","
 nmap <leader>v :tabedit $MYVIMRC<CR>
+
+" Better Rainbow Parentheses
+" --------------------------------------------
+Bundle 'https://github.com/kien/rainbow_parentheses.vim.git'
+" Vim-Nagios {
+"}
+"
+au VimEnter * RainbowParenthesesToggle
+"au Syntax * RainbowParenthesesLoadRound
+"au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+map <leader>p :RainbowParenthesesToggle<Enter>

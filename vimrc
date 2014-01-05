@@ -36,11 +36,18 @@ nnoremap <silent> <leader>gw :Gwrite<CR>:GitGutter<CR>
 nnoremap <silent> <leader>ge :Gedit<CR>
 nnoremap <silent> <leader>gg :GitGutterToggle<CR>
 "}
+Bundle 'https://github.com/tpope/vim-git.git'
 
 " EasyMotion
 " --------------------------------------------
 Bundle 'https://github.com/Lokaltog/vim-easymotion.git'
 " EasyMotion {
+"}
+
+" abolish.vim
+" --------------------------------------------
+Bundle 'https://github.com/tpope/vim-abolish.git'
+" abolish.vim {
 "}
 
 " Vim-Latex
@@ -114,6 +121,10 @@ if executable('rubocop')
 	Bundle 'https://github.com/ngmy/vim-rubocop'
 endif
 Bundle 'https://github.com/mattboehm/vim-unstack'
+Bundle 'https://github.com/vim-scripts/omlet.vim.git'
+
+Bundle 'lh-vim-lib'
+Bundle 'lh-brackets'
 
 " Autoclose
 " --------------------------------------------
@@ -185,6 +196,10 @@ Bundle 'https://github.com/skwp/vim-rspec.git'
 " --------------------------------------------
 Bundle 'https://github.com/tpope/vim-surround.git'
 
+" Vim-CSV
+" --------------------------------------------
+Bundle 'https://github.com/chrisbra/csv.vim.git'
+
 " NERD tree
 " --------------------------------------------
 Bundle 'https://github.com/scrooloose/nerdtree.git'
@@ -223,7 +238,17 @@ syntax on
 filetype on
 filetype indent on
 filetype plugin on
+autocmd FileType coffee
+	\ set expandtab |
+	\ set tabstop=2 shiftwidth=2 softtabstop=2 |
+	\ set autoindent
+
 autocmd FileType ruby
+	\ set expandtab |
+	\ set tabstop=2 shiftwidth=2 softtabstop=2 |
+	\ set autoindent
+
+autocmd FileType cucumber
 	\ set expandtab |
 	\ set tabstop=2 shiftwidth=2 softtabstop=2 |
 	\ set autoindent
@@ -233,6 +258,9 @@ au BufRead,BufNewFile Berksfile set filetype=ruby
 
 au BufRead,BufNewFile *.coffee set filetype=coffee
 au BufRead,BufNewFile *.json set filetype=json
+
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd Filetype javascript setlocal ts=4 sw=4 expandtab
 
 " Brief help
 " :BundleList          - list configured bundles

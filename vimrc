@@ -217,6 +217,10 @@ let $LANG = 'en_US'
 set number
 set hidden
 
+" Allow convert json & XML to pretty content
+map <leader>j :%!python -m json.tool<CR>
+map <leader>x :%!xmllint % --format<CR>
+
 " So what, I can't type...
 nmap :W :w
 nmap :X :x

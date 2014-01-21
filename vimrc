@@ -215,6 +215,7 @@ set langmenu=en_US.UTF-8    " sets the language of the menu (gvim)
 let $LANG = 'en_US'
 
 set number
+set hidden
 
 " So what, I can't type...
 nmap :W :w

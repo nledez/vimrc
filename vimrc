@@ -11,6 +11,12 @@ Bundle 'https://github.com/gmarik/vundle.git'
 filetype plugin indent on     " required!
 syntax enable
 
+" Snipmate
+" --------------------------------------------
+Bundle 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
+Bundle 'https://github.com/garbas/vim-snipmate.git'
+Bundle 'https://github.com/honza/vim-snippets.git'
+
 " Powerline
 " --------------------------------------------
 Bundle 'https://github.com/Lokaltog/vim-powerline.git'
@@ -111,8 +117,6 @@ let g:syntastic_check_on_open=1
 Bundle 'https://github.com/tpope/vim-markdown.git'
 " Bundle 'https://github.com/guileen/vim-node.git'
 " Bundle 'https://github.com/myhere/vim-nodejs-complete.git'
-Bundle 'https://github.com/vim-ruby/vim-ruby.git'
-Bundle 'https://github.com/tpope/vim-rails.git'
 " Bundle 'https://github.com/tpope/vim-bundler.git'
 Bundle 'https://github.com/elzr/vim-json.git'
 let g:vim_json_syntax_conceal = 0
@@ -192,6 +196,11 @@ Bundle 'https://github.com/tpope/vim-rails.git'
 Bundle 'https://github.com/skwp/vim-rspec.git'
 " Bundle 'https://github.com/tpope/vim-bundler.git'
 
+" Arduino
+" --------------------------------------------
+Bundle 'https://github.com/sudar/vim-arduino-syntax.git'
+Bundle 'https://github.com/sudar/vim-arduino-snippets.git'
+
 " Vim-surround
 " --------------------------------------------
 Bundle 'https://github.com/tpope/vim-surround.git'
@@ -257,6 +266,8 @@ autocmd FileType cucumber
 	\ set expandtab |
 	\ set tabstop=2 shiftwidth=2 softtabstop=2 |
 	\ set autoindent
+
+au BufRead,BufNewFile *.ino,*.pde set filetype=arduino
 
 au BufRead,BufNewFile Guardfile set filetype=ruby
 au BufRead,BufNewFile Berksfile set filetype=ruby

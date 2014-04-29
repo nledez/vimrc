@@ -286,7 +286,7 @@ set smartcase
 set hlsearch
 nmap \q :nohlsearch<CR>
 
-nmap ; :CtrlPBuffer<CR>
+nmap _ :CtrlPBuffer<CR>
 
 ":let g:ctrlp_map = '<Leader>t'
 ":let g:ctrlp_match_window_bottom = 0

@@ -1,28 +1,165 @@
 set nocompatible          " be iMproved
 filetype off              " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" let Vundle manage Vundle
-" required!
-Bundle 'https://github.com/gmarik/vundle.git'
-
-filetype plugin indent on     " required!
-syntax enable
+Plugin 'https://github.com/gmarik/vundle.git'
 
 " Snipmate
 " --------------------------------------------
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-
-" Optional:
-Bundle "honza/vim-snippets"
+Plugin 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
+Plugin 'https://github.com/tomtom/tlib_vim.git'
+Plugin 'https://github.com/garbas/vim-snipmate.git'
+Plugin 'https://github.com/honza/vim-snippets.git'
 
 " Powerline
 " --------------------------------------------
-Bundle 'https://github.com/Lokaltog/vim-powerline.git'
+Plugin 'https://github.com/Lokaltog/vim-powerline.git'
+
+" Git
+" --------------------------------------------
+Plugin 'https://github.com/tpope/vim-fugitive.git'
+Plugin 'https://github.com/tpope/vim-git.git'
+
+" EasyMotion
+" --------------------------------------------
+Plugin 'https://github.com/Lokaltog/vim-easymotion.git'
+
+" abolish.vim
+" --------------------------------------------
+Plugin 'https://github.com/tpope/vim-abolish.git'
+
+" Vim-Latex
+" --------------------------------------------
+" Plugin 'https://github.com/jcf/vim-latex.git'
+
+" Vim-Nagios
+" --------------------------------------------
+Plugin 'https://github.com/tejr/vim-nagios.git'
+
+" Vim-Varnish
+" --------------------------------------------
+Plugin 'https://github.com/empanda/vim-varnish.git'
+
+" Vim-Nginx
+" --------------------------------------------
+Plugin 'https://github.com/evanmiller/nginx-vim-syntax.git'
+
+" Vim-Shorewall
+" --------------------------------------------
+Plugin 'https://github.com/vim-scripts/shorewall.vim.git'
+
+" Color / GUI
+" --------------------------------------------
+Plugin 'https://github.com/tomasr/molokai.git'
+"colors molokai
+"Plugin 'https://github.com/nanotech/jellybeans.git'
+Plugin 'https://github.com/nanotech/jellybeans.vim.git'
+
+" Syntax checker
+" --------------------------------------------
+Plugin 'https://github.com/scrooloose/syntastic.git',
+
+" Syntax
+" --------------------------------------------
+Plugin 'https://github.com/tpope/vim-markdown.git'
+" Plugin 'https://github.com/guileen/vim-node.git'
+" Plugin 'https://github.com/myhere/vim-nodejs-complete.git'
+" Plugin 'https://github.com/tpope/vim-bundler.git'
+Plugin 'https://github.com/elzr/vim-json.git'
+Plugin 'kchmck/vim-coffee-script.git'
+if executable('rubocop')
+	Plugin 'https://github.com/ngmy/vim-rubocop'
+endif
+Plugin 'https://github.com/mattboehm/vim-unstack'
+Plugin 'https://github.com/vim-scripts/omlet.vim.git'
+
+Plugin 'lh-vim-lib'
+Plugin 'lh-brackets'
+
+" Autoclose
+" --------------------------------------------
+Plugin 'https://github.com/Raimondi/delimitMate.git'
+
+" TagBar to see classes
+" --------------------------------------------
+Plugin 'https://github.com/majutsushi/tagbar.git'
+
+" Tabulations
+" --------------------------------------------
+Plugin 'https://github.com/godlygeek/tabular.git'
+
+" Ack
+" --------------------------------------------
+Plugin 'https://github.com/mileszs/ack.vim.git'
+
+" Ctrl P
+" --------------------------------------------
+Plugin 'https://github.com/kien/ctrlp.vim.git'
+
+" Line Number
+" --------------------------------------------
+"Plugin 'https://github.com/jeffkreeftmeijer/vim-numbertoggle.git'
+
+"" Supertab
+" --------------------------------------------
+"Plugin 'https://github.com/ervandew/supertab.git'
+
+" TaskList
+" --------------------------------------------
+Plugin 'https://github.com/vim-scripts/TaskList.vim.git'
+Plugin 'https://github.com/samsonw/vim-task.git'
+
+" Matchit
+" --------------------------------------------
+" Plugin 'https://github.com/tsaleh/vim-matchit.git'
+
+" Vim-ruby
+" --------------------------------------------
+Plugin 'https://github.com/vim-ruby/vim-ruby.git'
+Plugin 'https://github.com/ecomba/vim-ruby-refactoring.git'
+Plugin 'https://github.com/tpope/vim-cucumber.git'
+Plugin 'https://github.com/tpope/vim-haml.git'
+Plugin 'https://github.com/tpope/vim-endwise.git'
+Plugin 'https://github.com/tpope/vim-rbenv.git'
+
+" Vim-rails
+" --------------------------------------------
+Plugin 'https://github.com/tpope/vim-rails.git'
+Plugin 'https://github.com/skwp/vim-rspec.git'
+" Plugin 'https://github.com/tpope/vim-bundler.git'
+
+" Arduino
+" --------------------------------------------
+Plugin 'https://github.com/sudar/vim-arduino-syntax.git'
+Plugin 'https://github.com/sudar/vim-arduino-snippets.git'
+
+" Vim-surround
+" --------------------------------------------
+Plugin 'https://github.com/tpope/vim-surround.git'
+
+" NERD tree
+" --------------------------------------------
+Plugin 'https://github.com/scrooloose/nerdtree.git'
+
+" Vim-python
+" --------------------------------------------
+Plugin 'https://github.com/klen/python-mode.git'
+Plugin 'https://github.com/saltstack/salt-vim.git'
+Plugin 'https://github.com/nvie/vim-flake8.git'
+
+" Better Rainbow Parentheses
+" --------------------------------------------
+Plugin 'https://github.com/kien/rainbow_parentheses.vim.git'
+
+" Vim-CSV
+" --------------------------------------------
+Plugin 'https://github.com/chrisbra/csv.vim.git'
+
+call vundle#end()
+filetype plugin indent on     " required!
+syntax enable
 
 set laststatus=2
 set encoding=utf-8
@@ -30,9 +167,6 @@ set t_Co=256
 " let g:Powerline_symbols = 'fancy'
 " let g:Powerline_symbols = 'unicode'
 
-" Git
-" --------------------------------------------
-Bundle 'https://github.com/tpope/vim-fugitive.git'
 " Fugitive {
 nnoremap <silent> <leader>gs :Gstatus<CR>
 nnoremap <silent> <leader>gd :Gdiff<CR>
@@ -45,23 +179,12 @@ nnoremap <silent> <leader>gw :Gwrite<CR>:GitGutter<CR>
 nnoremap <silent> <leader>ge :Gedit<CR>
 nnoremap <silent> <leader>gg :GitGutterToggle<CR>
 "}
-Bundle 'https://github.com/tpope/vim-git.git'
-
-" EasyMotion
-" --------------------------------------------
-Bundle 'https://github.com/Lokaltog/vim-easymotion.git'
 " EasyMotion {
 "}
 
-" abolish.vim
-" --------------------------------------------
-Bundle 'https://github.com/tpope/vim-abolish.git'
 " abolish.vim {
 "}
 
-" Vim-Latex
-" --------------------------------------------
-" Bundle 'https://github.com/jcf/vim-latex.git'
 " " Vim-Latex {
 " imap <buffer> <leader>it <Plug>Tex_InsertItemOnThisLine
 " imap <C-b> <Plug>Tex_MathBF
@@ -69,39 +192,21 @@ Bundle 'https://github.com/tpope/vim-abolish.git'
 " imap <C-i> <Plug>Tex_InsertItemOnThisLine
 "}
 
-" Vim-Nagios
-" --------------------------------------------
-Bundle 'https://github.com/tejr/vim-nagios.git'
 " Vim-Nagios {
 "}
 "
 
-" Vim-Varnish
-" --------------------------------------------
-Bundle 'https://github.com/empanda/vim-varnish.git'
 " Vim-Varnish {
 "}
 
-" Vim-Nginx
-" --------------------------------------------
-Bundle 'https://github.com/evanmiller/nginx-vim-syntax.git'
 " Vim-Nginx {
 au BufRead,BufNewFile */etc/nginx/** set ft=nginx
 "}
 
-" Vim-Shorewall
-" --------------------------------------------
-Bundle 'https://github.com/vim-scripts/shorewall.vim.git'
 " Vim-Shorewall {
 au BufRead,BufNewFile */etc/shorewall/** set ft=shorewall
 "}
 
-" Color / GUI
-" --------------------------------------------
-Bundle 'https://github.com/tomasr/molokai.git'
-"colors molokai
-"Bundle 'https://github.com/nanotech/jellybeans.git'
-Bundle 'https://github.com/nanotech/jellybeans.vim.git'
 colors jellybeans
 
 " set guifont=Monaco:h12
@@ -112,59 +217,24 @@ highlight CursorLine          guibg=#003853 ctermbg=24  gui=none cterm=none
 
 " Syntax checker
 " --------------------------------------------
-Bundle 'https://github.com/scrooloose/syntastic.git',
 let g:syntastic_check_on_open=1
 
 " Syntax
 " --------------------------------------------
-Bundle 'https://github.com/tpope/vim-markdown.git'
-" Bundle 'https://github.com/guileen/vim-node.git'
-" Bundle 'https://github.com/myhere/vim-nodejs-complete.git'
-" Bundle 'https://github.com/tpope/vim-bundler.git'
-Bundle 'https://github.com/elzr/vim-json.git'
 let g:vim_json_syntax_conceal = 0
-Bundle 'kchmck/vim-coffee-script.git'
-if executable('rubocop')
-	Bundle 'https://github.com/ngmy/vim-rubocop'
-endif
-Bundle 'https://github.com/mattboehm/vim-unstack'
-Bundle 'https://github.com/vim-scripts/omlet.vim.git'
-
-Bundle 'lh-vim-lib'
-" Bundle 'lh-brackets'
-
-" Autoclose
-" --------------------------------------------
-Bundle 'https://github.com/Raimondi/delimitMate.git'
-
-" TagBar to see classes
-" --------------------------------------------
-Bundle 'https://github.com/majutsushi/tagbar.git'
-
-" Tabulations
-" --------------------------------------------
-Bundle 'https://github.com/godlygeek/tabular.git'
-
-" Ack
-" --------------------------------------------
-Bundle 'https://github.com/mileszs/ack.vim.git'
-
 
 " Ctrl P
 " --------------------------------------------
-Bundle 'https://github.com/kien/ctrlp.vim.git'
 let g:ctrlp_max_height = 25
 let g:ctrlp_max_files = 90000
 let g:ctrlp_clear_cache_on_exit = 1
 
 " Line Number
 " --------------------------------------------
-"Bundle 'https://github.com/jeffkreeftmeijer/vim-numbertoggle.git'
 "let g:NumberToggleTrigger="<F3>"
 
 "" Supertab
 " --------------------------------------------
-"Bundle 'https://github.com/ervandew/supertab.git'
 "inoremap <expr> <Esc>  pumvisible() ? "\<C-e>" : "\<Esc>"
 """ inoremap <expr> <CR>   pumvisible() ? "\<C-y>" : "\<CR>"
 "inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
@@ -172,45 +242,13 @@ let g:ctrlp_clear_cache_on_exit = 1
 
 " TaskList
 " --------------------------------------------
-Bundle 'https://github.com/vim-scripts/TaskList.vim.git'
-Bundle 'https://github.com/samsonw/vim-task.git'
-
 autocmd BufNewFile,BufRead todo.txt,*.todo,*.task,*.tasks  setfiletype task | call VimrcMapTaskListKey()
 function VimrcMapTaskListKey()
 	:nmap \d :call Toggle_task_status()<CR>
 endfunction
 
-" Matchit
-" --------------------------------------------
-" Bundle 'https://github.com/tsaleh/vim-matchit.git'
-
-" Vim-ruby
-" --------------------------------------------
-Bundle 'https://github.com/vim-ruby/vim-ruby.git'
-Bundle 'https://github.com/ecomba/vim-ruby-refactoring.git'
-Bundle 'https://github.com/tpope/vim-cucumber.git'
-Bundle 'https://github.com/tpope/vim-haml.git'
-Bundle 'https://github.com/tpope/vim-endwise.git'
-Bundle 'https://github.com/tpope/vim-rbenv.git'
-
-" Vim-rails
-" --------------------------------------------
-Bundle 'https://github.com/tpope/vim-rails.git'
-Bundle 'https://github.com/skwp/vim-rspec.git'
-" Bundle 'https://github.com/tpope/vim-bundler.git'
-
-" Arduino
-" --------------------------------------------
-Bundle 'https://github.com/sudar/vim-arduino-syntax.git'
-Bundle 'https://github.com/sudar/vim-arduino-snippets.git'
-
-" Vim-surround
-" --------------------------------------------
-Bundle 'https://github.com/tpope/vim-surround.git'
-
 " Vim-CSV
 " --------------------------------------------
-Bundle 'https://github.com/chrisbra/csv.vim.git'
 if exists("did_load_csvfiletype")
 	finish
 endif
@@ -222,7 +260,6 @@ augroup END
 
 " NERD tree
 " --------------------------------------------
-Bundle 'https://github.com/scrooloose/nerdtree.git'
 nmap \e :NERDTreeToggle<CR>
 
 "source ~/.vim/global.vim
@@ -289,18 +326,6 @@ au BufRead,BufNewFile *.json set filetype=json
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype javascript setlocal ts=4 sw=4 expandtab
 
-" Python
-Bundle 'https://github.com/nvie/vim-flake8.git'
-
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
-
 " .vimrc.after is loaded after the plugins have loaded
 nmap \l :setlocal number!<CR>
 nmap \o :set paste!<CR>"
@@ -347,9 +372,6 @@ endif
 let mapleader = ","
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
-" Better Rainbow Parentheses
-" --------------------------------------------
-Bundle 'https://github.com/kien/rainbow_parentheses.vim.git'
 " Vim-Nagios {
 "}
 "

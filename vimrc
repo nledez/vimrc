@@ -208,6 +208,14 @@ Bundle 'https://github.com/tpope/vim-surround.git'
 " Vim-CSV
 " --------------------------------------------
 Bundle 'https://github.com/chrisbra/csv.vim.git'
+if exists("did_load_csvfiletype")
+	finish
+endif
+let did_load_csvfiletype=1
+
+augroup filetypedetect
+	au! BufRead,BufNewFile *.csv,*.datsetfiletype csv
+augroup END
 
 " NERD tree
 " --------------------------------------------

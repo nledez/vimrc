@@ -128,7 +128,7 @@ Bundle 'https://github.com/mattboehm/vim-unstack'
 Bundle 'https://github.com/vim-scripts/omlet.vim.git'
 
 Bundle 'lh-vim-lib'
-Bundle 'lh-brackets'
+" Bundle 'lh-brackets'
 
 " Autoclose
 " --------------------------------------------

@@ -9,6 +9,7 @@ Plugin 'https://github.com/gmarik/vundle.git'
 " Snipmate
 " --------------------------------------------
 Plugin 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
+Bundle "https://github.com/tomtom/tlib_vim.git"
 Plugin 'https://github.com/garbas/vim-snipmate.git'
 Plugin 'https://github.com/honza/vim-snippets.git'
 

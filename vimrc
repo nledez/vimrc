@@ -13,9 +13,12 @@ syntax enable
 
 " Snipmate
 " --------------------------------------------
-Bundle 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
-Bundle 'https://github.com/garbas/vim-snipmate.git'
-Bundle 'https://github.com/honza/vim-snippets.git'
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+
+" Optional:
+Bundle "honza/vim-snippets"
 
 " Powerline
 " --------------------------------------------

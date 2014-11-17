@@ -278,6 +278,9 @@ au BufRead,BufNewFile *.json set filetype=json
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype javascript setlocal ts=4 sw=4 expandtab
 
+" Python
+Bundle 'https://github.com/nvie/vim-flake8.git'
+
 " Brief help
 " :BundleList          - list configured bundles
 " :BundleInstall(!)    - install(update) bundles

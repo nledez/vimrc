@@ -179,7 +179,7 @@ endfunction
 
 " Matchit
 " --------------------------------------------
-Bundle 'https://github.com/tsaleh/vim-matchit.git'
+" Bundle 'https://github.com/tsaleh/vim-matchit.git'
 
 " Vim-ruby
 " --------------------------------------------

@@ -4,7 +4,8 @@ filetype off              " required!
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'https://github.com/gmarik/vundle.git'
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
 " Snipmate
 " --------------------------------------------
@@ -12,6 +13,10 @@ Plugin 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
 Plugin 'https://github.com/tomtom/tlib_vim.git'
 Plugin 'https://github.com/garbas/vim-snipmate.git'
 Plugin 'https://github.com/honza/vim-snippets.git'
+
+" Track the engine
+" --------------------------------------------
+Plugin 'SirVer/ultisnips'
 
 " Powerline
 " --------------------------------------------
@@ -75,8 +80,12 @@ endif
 Plugin 'https://github.com/mattboehm/vim-unstack'
 Plugin 'https://github.com/vim-scripts/omlet.vim.git'
 
-Plugin 'lh-vim-lib'
-Plugin 'lh-brackets'
+" LucHermitte - brackets
+" --------------------------------------------
+Plugin 'LucHermitte/lh-vim-lib'
+Plugin 'LucHermitte/lh-tags'
+Plugin 'LucHermitte/lh-dev'
+Plugin 'LucHermitte/lh-brackets'
 
 " Autoclose
 " --------------------------------------------
@@ -149,13 +158,17 @@ Plugin 'https://github.com/klen/python-mode.git'
 Plugin 'https://github.com/saltstack/salt-vim.git'
 Plugin 'https://github.com/nvie/vim-flake8.git'
 
+" Vim-javascript
+" --------------------------------------------
+Plugin 'isRuslan/vim-es6'
+
 " Better Rainbow Parentheses
 " --------------------------------------------
 Plugin 'https://github.com/kien/rainbow_parentheses.vim.git'
 
 " Vim-CSV
 " --------------------------------------------
-Plugin 'https://github.com/chrisbra/csv.vim.git'
+" Plugin 'https://github.com/chrisbra/csv.vim.git'
 
 call vundle#end()
 filetype plugin indent on     " required!
@@ -249,14 +262,14 @@ endfunction
 
 " Vim-CSV
 " --------------------------------------------
-if exists("did_load_csvfiletype")
-	finish
-endif
-let did_load_csvfiletype=1
-
-augroup filetypedetect
-	au! BufRead,BufNewFile *.csv,*.datsetfiletype csv
-augroup END
+" if exists("did_load_csvfiletype")
+" 	finish
+" endif
+" let did_load_csvfiletype=1
+" 
+" augroup filetypedetect
+" 	au! BufRead,BufNewFile *.csv,*.datsetfiletype csv
+" augroup END
 
 " NERD tree
 " --------------------------------------------
@@ -328,7 +341,7 @@ autocmd Filetype javascript setlocal ts=4 sw=4 expandtab
 
 " .vimrc.after is loaded after the plugins have loaded
 nmap \l :setlocal number!<CR>
-nmap \o :set paste!<CR>"
+nmap \o :set paste!<CR>
 
 set incsearch
 set ignorecase

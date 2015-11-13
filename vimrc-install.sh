@@ -56,3 +56,7 @@ fi
 which dpkg >/dev/null && dpkg -l vim-nox | grep -qE '^ii[ ]+vim-nox[ ]+' || apt-get install - vim-nox
 
 vim +PluginInstall +qall
+
+read
+
+reset

@@ -161,6 +161,7 @@ Plugin 'https://github.com/nvie/vim-flake8.git'
 " Vim-javascript
 " --------------------------------------------
 Plugin 'isRuslan/vim-es6'
+Plugin 'digitaltoad/vim-jade'
 
 " Better Rainbow Parentheses
 " --------------------------------------------
@@ -193,6 +194,16 @@ nnoremap <silent> <leader>ge :Gedit<CR>
 nnoremap <silent> <leader>gg :GitGutterToggle<CR>
 "}
 " EasyMotion {
+"}
+
+" SirVer/ultisnips {
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 "}
 
 " abolish.vim {

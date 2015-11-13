@@ -16,7 +16,9 @@ Plugin 'https://github.com/honza/vim-snippets.git'
 
 " Track the engine
 " --------------------------------------------
-Plugin 'SirVer/ultisnips'
+if version > 704
+	Plugin 'SirVer/ultisnips'
+endif
 
 " Powerline
 " --------------------------------------------

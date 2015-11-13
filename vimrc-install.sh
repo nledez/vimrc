@@ -40,18 +40,18 @@ git config user.email github@ledez.net
 git config user.name "Nicolas Ledez"
 git checkout master
 
-# cd $TARGET
+cd $TARGET
 
-# if [[ ( -f $TARGET/.vimrc ) && ( "$(readlink $TARGET/.vimrc)" == ".vim/vimrc") ]] ;then
-# 	echo "$TARGET/.vimrc allready exist"
-# else
-# 	echo "Need to install $TARGET/.vimrc"
-# 	if [ -e $TARGET/.vimrc ] ; then
-# 		rm $TARGET/.vimrc
-# 	fi
-# 	cd && \
-# 	ln -s .vim/vimrc .vimrc
-# fi
+if [[ ( -f $TARGET/.vimrc ) && ( "$(readlink $TARGET/.vimrc)" == ".vim/vimrc") ]] ;then
+	echo "$TARGET/.vimrc allready exist"
+else
+	echo "Need to install $TARGET/.vimrc"
+	if [ -e $TARGET/.vimrc ] ; then
+		rm $TARGET/.vimrc
+	fi
+	cd && \
+	ln -s .vim/vimrc .vimrc
+fi
 
 which dpkg >/dev/null && dpkg -l vim-nox | grep -qE '^ii[ ]+vim-nox[ ]+' || apt-get install - vim-nox
 

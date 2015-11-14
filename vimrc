@@ -84,10 +84,10 @@ Plugin 'https://github.com/vim-scripts/omlet.vim.git'
 
 " LucHermitte - brackets
 " --------------------------------------------
-Plugin 'LucHermitte/lh-vim-lib'
-Plugin 'LucHermitte/lh-tags'
-Plugin 'LucHermitte/lh-dev'
-Plugin 'LucHermitte/lh-brackets'
+" Plugin 'LucHermitte/lh-vim-lib'
+" Plugin 'LucHermitte/lh-tags'
+" Plugin 'LucHermitte/lh-dev'
+" Plugin 'LucHermitte/lh-brackets'
 
 " Autoclose
 " --------------------------------------------

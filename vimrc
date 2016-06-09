@@ -372,21 +372,21 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 
-" Les touches fléchées sont désactivées.
-" Utile pour apprendre vim.
-"
-" En mode normal, vous pourrez les utiliser plus tard
-" pour faire quelque chose d'utile.
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-" En mode insertion, vous pourrez enlever la
-" désactivation dans quelques semaines.
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+" " Les touches fléchées sont désactivées.
+" " Utile pour apprendre vim.
+" "
+" " En mode normal, vous pourrez les utiliser plus tard
+" " pour faire quelque chose d'utile.
+" nnoremap <up> <nop>
+" nnoremap <down> <nop>
+" nnoremap <left> <nop>
+" nnoremap <right> <nop>
+" " En mode insertion, vous pourrez enlever la
+" " désactivation dans quelques semaines.
+" inoremap <up> <nop>
+" inoremap <down> <nop>
+" inoremap <left> <nop>
+" inoremap <right> <nop>
 
 nnoremap <Space> za
 

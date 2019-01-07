@@ -1,1 +1,4 @@
 bundle/*/
+venv2/
+venv3/
+local.rc

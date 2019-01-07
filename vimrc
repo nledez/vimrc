@@ -1,6 +1,50 @@
 set nocompatible          " be iMproved
 filetype off              " required!
 
+if !empty(glob("~/.vim/local.rc"))
+   source ~/.vim/local.rc
+endif
+
+if !exists("g:local_run_ruby")
+	let g:local_run_ruby = 0
+end
+
+if !exists("g:local_run_python")
+	let g:local_run_python = 0
+end
+
+if !exists("g:local_run_arduino")
+	let g:local_run_arduino = 0
+end
+
+if !exists("g:local_run_go")
+	let g:local_run_go = 0
+end
+
+if !exists("g:local_run_nginx")
+	let g:local_run_nginx = 0
+end
+
+if !exists("g:local_run_shorewall")
+	let g:local_run_shorewall = 0
+end
+
+if !exists("g:local_run_hashi")
+	let g:local_run_hashi = 0
+end
+
+if !exists("g:local_run_ansible")
+	let g:local_run_ansible = 0
+end
+
+if !exists("g:local_run_latex")
+	let g:local_run_latex = 0
+end
+
+if !exists("g:local_run_3d")
+	let g:local_run_3d = 0
+end
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -33,29 +77,55 @@ Plugin 'https://github.com/tpope/vim-git.git'
 " --------------------------------------------
 Plugin 'https://github.com/Lokaltog/vim-easymotion.git'
 
+" Vim-projectionist
+" --------------------------------------------
+Plugin 'https://github.com/tpope/vim-projectionist.git'
+
+" Vim-Dispatch
+" --------------------------------------------
+Plugin 'https://github.com/tpope/vim-dispatch.git'
+
 " abolish.vim
 " --------------------------------------------
 Plugin 'https://github.com/tpope/vim-abolish.git'
 
+" 
+" --------------------------------------------
+Plugin 'https://github.com/w0rp/ale.git'
+Plugin 'https://github.com/mhinz/vim-grepper.git'
+Plugin 'https://github.com/janko-m/vim-test.git'
+
+if (g:local_run_latex == 1)
 " Vim-Latex
 " --------------------------------------------
-" Plugin 'https://github.com/jcf/vim-latex.git'
+Plugin 'https://github.com/jcf/vim-latex.git'
+endif
 
-" Vim-Nagios
-" --------------------------------------------
-Plugin 'https://github.com/tejr/vim-nagios.git'
-
-" Vim-Varnish
-" --------------------------------------------
-Plugin 'https://github.com/empanda/vim-varnish.git'
-
+if (g:local_run_nginx == 1)
 " Vim-Nginx
 " --------------------------------------------
-Plugin 'https://github.com/evanmiller/nginx-vim-syntax.git'
+" Plugin 'https://github.com/evanmiller/nginx-vim-syntax.git'
+Plugin 'https://github.com/rhowardiv/nginx-vim-syntax.git'
+endif
 
+if (g:local_run_shorewall == 1)
 " Vim-Shorewall
 " --------------------------------------------
 Plugin 'https://github.com/vim-scripts/shorewall.vim.git'
+endif
+
+if (g:local_run_3d == 1)
+" syntax highlighting for OpenSCAD
+" --------------------------------------------
+Plugin 'https://github.com/sirtaj/vim-openscad.git'
+Plugin 'https://github.com/gregjurman/vim-nc.git'
+endif
+
+if (g:local_run_hashi == 1)
+" HCL
+" --------------------------------------------
+Plugin 'https://github.com/b4b4r07/vim-hcl.git'
+endif
 
 " Color / GUI
 " --------------------------------------------
@@ -66,19 +136,18 @@ Plugin 'https://github.com/nanotech/jellybeans.vim.git'
 
 " Syntax checker
 " --------------------------------------------
-Plugin 'https://github.com/scrooloose/syntastic.git',
+" Plugin 'https://github.com/scrooloose/syntastic.git'
 
 " Syntax
 " --------------------------------------------
-Plugin 'https://github.com/tpope/vim-markdown.git'
 " Plugin 'https://github.com/guileen/vim-node.git'
 " Plugin 'https://github.com/myhere/vim-nodejs-complete.git'
 " Plugin 'https://github.com/tpope/vim-bundler.git'
 Plugin 'https://github.com/elzr/vim-json.git'
-Plugin 'kchmck/vim-coffee-script.git'
-if executable('rubocop')
-	Plugin 'https://github.com/ngmy/vim-rubocop'
-endif
+" Plugin 'kchmck/vim-coffee-script.git'
+" if executable('rubocop')
+" 	Plugin 'https://github.com/ngmy/vim-rubocop'
+" endif
 Plugin 'https://github.com/mattboehm/vim-unstack'
 Plugin 'https://github.com/vim-scripts/omlet.vim.git'
 
@@ -93,6 +162,14 @@ Plugin 'https://github.com/vim-scripts/omlet.vim.git'
 " --------------------------------------------
 Plugin 'https://github.com/Raimondi/delimitMate.git'
 
+" Docker
+" --------------------------------------------
+Plugin 'ekalinin/Dockerfile.vim'
+
+" yaml
+" --------------------------------------------
+Plugin 'avakhov/vim-yaml'
+
 " TagBar to see classes
 " --------------------------------------------
 Plugin 'https://github.com/majutsushi/tagbar.git'
@@ -100,6 +177,17 @@ Plugin 'https://github.com/majutsushi/tagbar.git'
 " Tabulations
 " --------------------------------------------
 Plugin 'https://github.com/godlygeek/tabular.git'
+
+" Kotlin
+" --------------------------------------------
+Plugin 'udalov/kotlin-vim'
+
+" Markdown
+" --------------------------------------------
+"  Plugin 'suan/vim-instant-markdown'
+Plugin 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_concealcursor=''
 
 " Ack
 " --------------------------------------------
@@ -126,6 +214,7 @@ Plugin 'https://github.com/samsonw/vim-task.git'
 " --------------------------------------------
 " Plugin 'https://github.com/tsaleh/vim-matchit.git'
 
+if (g:local_run_ruby == 1)
 " Vim-ruby
 " --------------------------------------------
 Plugin 'https://github.com/vim-ruby/vim-ruby.git'
@@ -134,17 +223,20 @@ Plugin 'https://github.com/tpope/vim-cucumber.git'
 Plugin 'https://github.com/tpope/vim-haml.git'
 Plugin 'https://github.com/tpope/vim-endwise.git'
 Plugin 'https://github.com/tpope/vim-rbenv.git'
+endif
 
 " Vim-rails
 " --------------------------------------------
-Plugin 'https://github.com/tpope/vim-rails.git'
-Plugin 'https://github.com/skwp/vim-rspec.git'
+" Plugin 'https://github.com/tpope/vim-rails.git'
+" Plugin 'https://github.com/skwp/vim-rspec.git'
 " Plugin 'https://github.com/tpope/vim-bundler.git'
 
+if (g:local_run_arduino == 1)
 " Arduino
 " --------------------------------------------
 Plugin 'https://github.com/sudar/vim-arduino-syntax.git'
 Plugin 'https://github.com/sudar/vim-arduino-snippets.git'
+endif
 
 " Vim-surround
 " --------------------------------------------
@@ -154,16 +246,62 @@ Plugin 'https://github.com/tpope/vim-surround.git'
 " --------------------------------------------
 Plugin 'https://github.com/scrooloose/nerdtree.git'
 
+if (g:local_run_python == 1)
 " Vim-python
 " --------------------------------------------
 Plugin 'https://github.com/klen/python-mode.git'
+Plugin 'https://github.com/plytophogy/vim-virtualenv.git'
 Plugin 'https://github.com/saltstack/salt-vim.git'
 Plugin 'https://github.com/nvie/vim-flake8.git'
+Plugin 'https://github.com/Rykka/riv.vim.git'
+endif
+
+if (g:local_run_go == 1)
+" Vim-go
+" --------------------------------------------
+Plugin 'fatih/vim-go'
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+endif
+
+if (g:local_run_hashi == 1)
+" Vim-hcl
+" --------------------------------------------
+Plugin 'fatih/vim-hclfmt'
+Plugin 'hashivim/vim-consul'
+Plugin 'hashivim/vim-nomadproject'
+Plugin 'hashivim/vim-packer'
+Plugin 'hashivim/vim-terraform'
+Plugin 'hashivim/vim-vagrant'
+Plugin 'hashivim/vim-vaultproject'
+endif
+
+if (g:local_run_ansible == 1)
+" Vim-ansible
+" --------------------------------------------
+Plugin 'Yggdroot/indentLine'
+Plugin 'pearofducks/ansible-vim'
+" Plugin 'chase/vim-ansible-yaml'
+endif
+
+if (g:local_run_python == 1)
+" Vim-python
+" --------------------------------------------
+let g:pymode_warnings = 1
+let g:pymode_lint_cwindow = 0
+let g:pymode_python = 'python3'
+endif
 
 " Vim-javascript
 " --------------------------------------------
-Plugin 'isRuslan/vim-es6'
-Plugin 'digitaltoad/vim-jade'
+" Plugin 'isRuslan/vim-es6'
+" Plugin 'digitaltoad/vim-jade'
 
 " Better Rainbow Parentheses
 " --------------------------------------------
@@ -211,27 +349,26 @@ let g:UltiSnipsEditSplit="vertical"
 " abolish.vim {
 "}
 
+if (g:local_run_latex == 1)
 " " Vim-Latex {
 " imap <buffer> <leader>it <Plug>Tex_InsertItemOnThisLine
 " imap <C-b> <Plug>Tex_MathBF
 " imap <C-c> <Plug>Tex_MathCal
 " imap <C-i> <Plug>Tex_InsertItemOnThisLine
 "}
+endif
 
-" Vim-Nagios {
-"}
-"
-
-" Vim-Varnish {
-"}
-
+if (g:local_run_nginx == 1)
 " Vim-Nginx {
 au BufRead,BufNewFile */etc/nginx/** set ft=nginx
 "}
+endif
 
+if (g:local_run_shorewall == 1)
 " Vim-Shorewall {
 au BufRead,BufNewFile */etc/shorewall/** set ft=shorewall
 "}
+endif
 
 colors jellybeans
 
@@ -243,7 +380,7 @@ highlight CursorLine          guibg=#003853 ctermbg=24  gui=none cterm=none
 
 " Syntax checker
 " --------------------------------------------
-let g:syntastic_check_on_open=1
+" let g:syntastic_check_on_open=1
 
 " Syntax
 " --------------------------------------------
@@ -331,6 +468,7 @@ autocmd FileType coffee
 	\ set tabstop=2 shiftwidth=2 softtabstop=2 |
 	\ set autoindent
 
+if (g:local_run_ruby == 1)
 autocmd FileType ruby
 	\ set expandtab |
 	\ set tabstop=2 shiftwidth=2 softtabstop=2 |
@@ -341,10 +479,32 @@ autocmd FileType cucumber
 	\ set tabstop=2 shiftwidth=2 softtabstop=2 |
 	\ set autoindent
 
-au BufRead,BufNewFile *.ino,*.pde set filetype=arduino
-
 au BufRead,BufNewFile Guardfile set filetype=ruby
 au BufRead,BufNewFile Berksfile set filetype=ruby
+endif
+
+if (g:local_run_3d == 1)
+" 3d
+" --------------------------------------------
+au BufNewFile,BufRead *.gcode setlocal nospell ft=ngc syntax=ngc
+endif
+
+
+if (g:local_run_arduino == 1)
+au BufRead,BufNewFile *.ino,*.pde set filetype=arduino
+endif
+
+if (g:local_run_hashi == 1)
+au BufRead,BufNewFile *.nomad set filetype=nomad
+autocmd FileType nomad setlocal et ts=2 ai sw=2 nu sts=0
+endif
+
+if (g:local_run_ansible == 1)
+autocmd FileType yaml setlocal et ts=2 ai sw=2 nu sts=0
+" autocmd FileType yaml.ansible setlocal et ts=2 ai sw=2 nu sts=0
+let g:indentLine_char = '│'
+nmap \p :IndentLinesToggle<CR>
+endif
 
 au BufRead,BufNewFile *.coffee set filetype=coffee
 au BufRead,BufNewFile *.json set filetype=json
@@ -372,22 +532,6 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 
-" " Les touches fléchées sont désactivées.
-" " Utile pour apprendre vim.
-" "
-" " En mode normal, vous pourrez les utiliser plus tard
-" " pour faire quelque chose d'utile.
-" nnoremap <up> <nop>
-" nnoremap <down> <nop>
-" nnoremap <left> <nop>
-" nnoremap <right> <nop>
-" " En mode insertion, vous pourrez enlever la
-" " désactivation dans quelques semaines.
-" inoremap <up> <nop>
-" inoremap <down> <nop>
-" inoremap <left> <nop>
-" inoremap <right> <nop>
-
 nnoremap <Space> za
 
 " Source the vimrc file after saving it
@@ -398,11 +542,76 @@ endif
 let mapleader = ","
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
-" Vim-Nagios {
-"}
-"
 au VimEnter * RainbowParenthesesToggle
 "au Syntax * RainbowParenthesesLoadRound
 "au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 map <leader>p :RainbowParenthesesToggle<Enter>
+
+if has("nvim")
+	" change cursor to bar in insert mode
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+  " disable mouse support, what am I a vimposer?
+  set mouse-=a
+
+  " run tests with :T
+  let test#strategy = "neoterm"
+
+  " vertical split instead of the default horizontal
+  let g:neoterm_position = "vertical"
+
+  " pretty much essential: by default in terminal mode, you have to press ctrl-\-n to get into normal mode
+  " ain't nobody got time for that
+  tnoremap <Esc> <C-\><C-n>
+
+  " optional: make it easier to switch between terminal splits
+  " ctrl doesn't work for some reason so I use alt
+  " I think the terminal is capturing ctrl and not bubbling to vim or something
+  tnoremap <A-h> <C-\><C-n><C-w>h
+  tnoremap <A-j> <C-\><C-n><C-w>j
+  tnoremap <A-k> <C-\><C-n><C-w>k
+  tnoremap <A-l> <C-\><C-n><C-w>l
+
+  " totally optional: mirror the alt split switching in non-terminal splits
+  nnoremap <A-h> <C-w>h
+  nnoremap <A-j> <C-w>j
+  nnoremap <A-k> <C-w>k
+  nnoremap <A-l> <C-w>l
+endif
+
+set rtp+=/usr/local/opt/fzf
+nnoremap <C-p> :<C-u>FZF<CR>
+
+" For JavaScript files, use `eslint` (and only eslint)
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\ }
+
+" Mappings in the style of unimpaired-next
+nmap <silent> [W <Plug>(ale_first)
+nmap <silent> [w <Plug>(ale_previous)
+nmap <silent> ]w <Plug>(ale_next)
+nmap <silent> ]W <Plug>(ale_last)
+
+" Grepper
+let g:grepper       = {}
+let g:grepper.tools = ['grep', 'git', 'rg']
+
+" Search for the current word
+nnoremap <Leader>* :Grepper -cword -noprompt<CR>
+
+" Search for the current selection
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
+
+function! SetupCommandAlias(input, output)
+  exec 'cabbrev <expr> '.a:input
+        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:input.'")'
+        \ .'? ("'.a:output.'") : ("'.a:input.'"))'
+endfunction
+call SetupCommandAlias("grep", "GrepperGrep")
+
+" Open Grepper-prompt for a particular Grep-alike tool
+nnoremap <Leader>g :Grepper -tool git<CR>
+nnoremap <Leader>G :Grepper -tool rg<CR>

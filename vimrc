@@ -9,12 +9,20 @@ if !exists("g:local_run_fish")
 	let g:local_run_fish = 0
 end
 
+if !exists("g:local_run_kapeli")
+	let g:local_run_kapeli = 0
+end
+
 if !exists("g:local_run_ruby")
 	let g:local_run_ruby = 0
 end
 
 if !exists("g:local_run_python")
 	let g:local_run_python = 0
+end
+
+if !exists("g:local_run_markdown")
+	let g:local_run_markdown = 0
 end
 
 if !exists("g:local_run_arduino")
@@ -186,12 +194,14 @@ Plugin 'https://github.com/godlygeek/tabular.git'
 " --------------------------------------------
 Plugin 'udalov/kotlin-vim'
 
+if (g:local_run_markdown == 1)
 " Markdown
 " --------------------------------------------
 "  Plugin 'suan/vim-instant-markdown'
 Plugin 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_concealcursor=''
+endif
 
 " Ack
 " --------------------------------------------
@@ -222,6 +232,12 @@ if (g:local_run_fish == 1)
 " Vim-fish
 " --------------------------------------------
 Plugin 'https://github.com/dag/vim-fish.git'
+endif
+
+if (g:local_run_kapeli == 1)
+" Vim-dash (from kapeli)
+" --------------------------------------------
+Plugin 'rizzatti/dash.vim'
 endif
 
 if (g:local_run_ruby == 1)
@@ -259,7 +275,7 @@ Plugin 'https://github.com/scrooloose/nerdtree.git'
 if (g:local_run_python == 1)
 " Vim-python
 " --------------------------------------------
-Plugin 'https://github.com/klen/python-mode.git'
+Plugin 'https://github.com/python-mode/python-mode.git'
 Plugin 'https://github.com/plytophogy/vim-virtualenv.git'
 Plugin 'https://github.com/saltstack/salt-vim.git'
 Plugin 'https://github.com/nvie/vim-flake8.git'
@@ -306,6 +322,7 @@ if (g:local_run_python == 1)
 let g:pymode_warnings = 1
 let g:pymode_lint_cwindow = 0
 let g:pymode_python = 'python3'
+let g:pymode_lint_config = '$HOME/pylint.rc'
 endif
 
 " Vim-javascript

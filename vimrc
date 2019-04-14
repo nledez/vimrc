@@ -528,7 +528,8 @@ endif
 
 if (g:local_run_ansible == 1)
 autocmd FileType yaml setlocal et ts=2 ai sw=2 nu sts=0
-" autocmd FileType yaml.ansible setlocal et ts=2 ai sw=2 nu sts=0
+autocmd FileType yaml.ansible setlocal et ts=2 ai sw=2 nu sts=0
+au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
 let g:indentLine_char = '│'
 nmap \p :IndentLinesToggle<CR>
 endif

@@ -5,6 +5,10 @@ if !empty(glob("~/.vim/local.rc"))
    source ~/.vim/local.rc
 endif
 
+if !exists("g:local_run_fish")
+	let g:local_run_fish = 0
+end
+
 if !exists("g:local_run_ruby")
 	let g:local_run_ruby = 0
 end
@@ -213,6 +217,12 @@ Plugin 'https://github.com/samsonw/vim-task.git'
 " Matchit
 " --------------------------------------------
 " Plugin 'https://github.com/tsaleh/vim-matchit.git'
+
+if (g:local_run_fish == 1)
+" Vim-fish
+" --------------------------------------------
+Plugin 'https://github.com/dag/vim-fish.git'
+endif
 
 if (g:local_run_ruby == 1)
 " Vim-ruby

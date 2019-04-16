@@ -6,7 +6,7 @@ if [ $BASE = "." ]; then
 fi
 
 if [ "$1" = "" ]; then
-	TARGET=/root
+	TARGET="$HOME"
 else
 	TARGET="$1"
 fi
@@ -50,10 +50,18 @@ else
 		rm $TARGET/.vimrc
 	fi
 	cd && \
-	ln -s .vim/vimrc .vimrc
+	ln -s ${TARGET}/.vim/vimrc ${TARGET}/.vimrc
 fi
 
-which dpkg >/dev/null && dpkg -l vim-nox | grep -qE '^ii[ ]+vim-nox[ ]+' || apt-get install - vim-nox
+if [ -d ${TARGET}/.config ]; then
+	if [ ! -e ${TARGET}/.config/nvim ]; then
+		ln -s $TARGET/.vim ${TARGET}/.config/nvim
+	fi
+fi
+
+if [ "$OSTYPE" = "linux-gnu" ]; then
+	which dpkg >/dev/null && dpkg -l vim-nox | grep -qE '^ii[ ]+vim-nox[ ]+' || apt-get install - vim-nox
+fi
 
 vim +PluginInstall +qall
 

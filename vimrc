@@ -57,6 +57,18 @@ if !exists("g:local_run_3d")
 	let g:local_run_3d = 0
 end
 
+if !exists("g:local_run_jenkins")
+	let g:local_run_jenkins = 0
+end
+
+if !exists("g:local_run_snipmate")
+	let g:local_run_snipmate = 0
+end
+
+if !exists("g:local_run_ultisnips")
+	let g:local_run_ultisnips = 0
+end
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -65,15 +77,19 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Snipmate
 " --------------------------------------------
+if (g:local_run_snipmate == 1)
 Plugin 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
 Plugin 'https://github.com/tomtom/tlib_vim.git'
 Plugin 'https://github.com/garbas/vim-snipmate.git'
 Plugin 'https://github.com/honza/vim-snippets.git'
+endif
 
-" Track the engine
+
+" ultisnips
 " --------------------------------------------
-if version > 704
-	Plugin 'SirVer/ultisnips'
+if (g:local_run_ultisnips == 1)
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 endif
 
 " Powerline
@@ -131,6 +147,12 @@ if (g:local_run_3d == 1)
 " --------------------------------------------
 Plugin 'https://github.com/sirtaj/vim-openscad.git'
 Plugin 'https://github.com/gregjurman/vim-nc.git'
+endif
+
+if (g:local_run_jenkins == 1)
+" syntax highlighting for Jenkins
+" --------------------------------------------
+Plugin 'https://github.com/martinda/Jenkinsfile-vim-syntax.git'
 endif
 
 if (g:local_run_hashi == 1)
@@ -209,7 +231,7 @@ Plugin 'https://github.com/mileszs/ack.vim.git'
 
 " Ctrl P
 " --------------------------------------------
-Plugin 'https://github.com/kien/ctrlp.vim.git'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " Line Number
 " --------------------------------------------
@@ -270,7 +292,7 @@ Plugin 'https://github.com/tpope/vim-surround.git'
 
 " NERD tree
 " --------------------------------------------
-Plugin 'https://github.com/scrooloose/nerdtree.git'
+Plugin 'https://github.com/preservim/nerdtree.git'
 
 if (g:local_run_python == 1)
 " Vim-python
@@ -286,14 +308,43 @@ if (g:local_run_go == 1)
 " Vim-go
 " --------------------------------------------
 Plugin 'fatih/vim-go'
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
 
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+" Go syntax highlighting
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_operators = 1
+
+" Auto formatting and importing
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "goimports"
+
+" Status line types/signatures
+let g:go_auto_type_info = 1
+
+" Run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+" Map keys for most used commands.
+" Ex: `\b` for building, `\r` for running and `\b` for running test.
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader>c  <Plug>(go-coverage)
+
+"au FileType go nmap <leader>b <Plug>(go-build)
+
+autocmd FileType go nmap <Leader>ds <Plug>(go-def-split)
+autocmd FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+autocmd FileType go nmap <Leader>dt <Plug>(go-def-tab)
 endif
 
 if (g:local_run_hashi == 1)
@@ -329,6 +380,7 @@ endif
 " --------------------------------------------
 " Plugin 'isRuslan/vim-es6'
 " Plugin 'digitaltoad/vim-jade'
+Plugin 'pangloss/vim-javascript'
 
 " Better Rainbow Parentheses
 " --------------------------------------------
@@ -341,6 +393,7 @@ Plugin 'https://github.com/kien/rainbow_parentheses.vim.git'
 call vundle#end()
 filetype plugin indent on     " required!
 syntax enable
+set autowrite
 
 set laststatus=2
 set encoding=utf-8
@@ -363,8 +416,11 @@ nnoremap <silent> <leader>gg :GitGutterToggle<CR>
 " EasyMotion {
 "}
 
+if (g:local_run_ultisnips == 1)
 " SirVer/ultisnips {
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+" - https://github.com/Valloric/YouCompleteMe
+" - https://github.com/nvim-lua/completion-nvim
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -372,6 +428,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 "}
+endif
 
 " abolish.vim {
 "}
@@ -450,7 +507,15 @@ endfunction
 
 " NERD tree
 " --------------------------------------------
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
+
 nmap \e :NERDTreeToggle<CR>
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let NERDTreeShowHidden=1 " Show hidden files
 
 "source ~/.vim/global.vim
 "source ~/.vim/bindings.vim
@@ -567,8 +632,13 @@ if has("autocmd")
   autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
-let mapleader = ","
+"let mapleader = ","
 nmap <leader>v :tabedit $MYVIMRC<CR>
+
+" Navigate threw errors
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
 
 au VimEnter * RainbowParenthesesToggle
 "au Syntax * RainbowParenthesesLoadRound

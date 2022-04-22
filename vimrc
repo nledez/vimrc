@@ -94,12 +94,14 @@ endif
 
 " Powerline
 " --------------------------------------------
-Plugin 'https://github.com/Lokaltog/vim-powerline.git'
+" Plugin 'https://github.com/Lokaltog/vim-powerline.git'
+Plugin 'https://github.com/vim-airline/vim-airline.git'
 
 " Git
 " --------------------------------------------
 Plugin 'https://github.com/tpope/vim-fugitive.git'
 Plugin 'https://github.com/tpope/vim-git.git'
+" Plugin 'https://github.com/airblade/vim-gitgutter.git'
 
 " EasyMotion
 " --------------------------------------------
@@ -119,7 +121,7 @@ Plugin 'https://github.com/tpope/vim-abolish.git'
 
 " 
 " --------------------------------------------
-Plugin 'https://github.com/w0rp/ale.git'
+" Plugin 'https://github.com/w0rp/ale.git'
 Plugin 'https://github.com/mhinz/vim-grepper.git'
 Plugin 'https://github.com/janko-m/vim-test.git'
 
@@ -170,7 +172,16 @@ Plugin 'https://github.com/nanotech/jellybeans.vim.git'
 
 " Syntax checker
 " --------------------------------------------
+Plugin 'https://github.com/dense-analysis/ale'
 " Plugin 'https://github.com/scrooloose/syntastic.git'
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" 
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
 " Syntax
 " --------------------------------------------
@@ -363,8 +374,9 @@ if (g:local_run_ansible == 1)
 " Vim-ansible
 " --------------------------------------------
 Plugin 'Yggdroot/indentLine'
-Plugin 'pearofducks/ansible-vim'
-" Plugin 'chase/vim-ansible-yaml'
+Plugin 'https://github.com/pearofducks/ansible-vim'
+" Plugin 'pearofducks/ansible-vim'
+" Bundle 'chase/vim-ansible-yaml'
 endif
 
 if (g:local_run_python == 1)
@@ -682,15 +694,24 @@ set rtp+=/usr/local/opt/fzf
 nnoremap <C-p> :<C-u>FZF<CR>
 
 " For JavaScript files, use `eslint` (and only eslint)
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\ }
+" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" let g:ale_sign_error = '✘'
+" let g:ale_sign_warning = '⚠'
+" let g:ale_lint_on_text_changed = 'never'
+" let g:ale_fix_on_save = 1
+
+" let g:ale_linters = {
+" \   'javascript': ['eslint'],
+" \ }
+
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
 
 " Mappings in the style of unimpaired-next
-nmap <silent> [W <Plug>(ale_first)
-nmap <silent> [w <Plug>(ale_previous)
-nmap <silent> ]w <Plug>(ale_next)
-nmap <silent> ]W <Plug>(ale_last)
+" nmap <silent> [W <Plug>(ale_first)
+" nmap <silent> [w <Plug>(ale_previous)
+" nmap <silent> ]w <Plug>(ale_next)
+" nmap <silent> ]W <Plug>(ale_last)
 
 " Grepper
 let g:grepper       = {}

@@ -5,6 +5,10 @@ if [ $BASE = "." ]; then
 	BASE=$(pwd)
 fi
 
+if [ -z $VI_PACKAGE ]; then
+	VI_PACKAGE=vim-nox
+fi
+
 if [ "$1" = "" ]; then
 	TARGET="$HOME"
 else
@@ -53,15 +57,20 @@ else
 	ln -s ${TARGET}/.vim/vimrc ${TARGET}/.vimrc
 fi
 
-if [ -d ${TARGET}/.config ]; then
-	if [ ! -e ${TARGET}/.config/nvim ]; then
-		ln -s $TARGET/.vim ${TARGET}/.config/nvim
-	fi
+if [ ! -d ${TARGET}/.config ]; then
+	mkdir ${TARGET}/.config
+fi
+
+if [ ! -e ${TARGET}/.config/nvim ]; then
+	ln -s $TARGET/.vim ${TARGET}/.config/nvim
 fi
 
 if [ "$OSTYPE" = "linux-gnu" ]; then
-	which dpkg >/dev/null && dpkg -l vim-nox | grep -qE '^ii[ ]+vim-nox[ ]+' || apt-get install - vim-nox
+	which dpkg >/dev/null && dpkg -l ${VI_PACKAGE} | grep -qE "^ii[ ]+${VI_PACKAGE}[ ]+" || apt-get install - ${VI_PACKAGE}
 fi
+
+cd ~/ $TARGET/.vim
+bash install-venv-localpython.sh
 
 vim +PluginInstall +qall
 

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-BASE=$(dirname $0)
-if [ $BASE = "." ]; then
+BASE=$(dirname "$0")
+if [ "$BASE" = "." ]; then
 	BASE=$(pwd)
 fi
 
-if [ -z $VI_PACKAGE ]; then
+if [ -z "$VI_PACKAGE" ]; then
 	VI_PACKAGE=vim-nox
 fi
 
@@ -15,24 +15,20 @@ else
 	TARGET="$1"
 fi
 
-if [ -d $TARGET/.vim ]; then
+echo "Start with TARGET: $TARGET"
+
+if [ -d "$TARGET/.vim" ]; then
 	echo "$TARGET/.vim allready exist"
 else
 	echo "Need to install $TARGET/.vim"
-	cd $TARGET
+	cd "$TARGET" || exit 1
 	git clone git@github.com:nledez/vimrc.git .vim
-	rm $TARGET/.vim/.git/hooks/*.sample
-	cd $TARGET/.vim/.git/hooks
+	rm "$TARGET/.vim/.git/hooks/*.sample"
+	cd "$TARGET/.vim/.git/hooks" || exit 1
 	ln -s ../../git-post-merge post-merge
 fi
 
-cd $TARGET/.vim
-
-pwd | grep -Eq '.vim$'
-if [ "$?" != "0" ]; then
-	echo "Cannot go in $TARGET/.vim"
-	exit 1
-fi
+cd "$TARGET/.vim" || exit 1
 
 [ ! -d bundle ] && mkdir bundle
 [ ! -d bundle/Vundle.vim ] && git clone https://github.com/gmarik/Vundle.vim.git bundle/Vundle.vim
@@ -44,36 +40,43 @@ git config user.email github@ledez.net
 git config user.name "Nicolas Ledez"
 git checkout master
 
-cd $TARGET
+cd "$TARGET" || exit 1
 
-if [[ ( -f $TARGET/.vimrc ) && ( "$(readlink $TARGET/.vimrc)" == ".vim/vimrc") ]] ;then
-	echo "$TARGET/.vimrc allready exist"
+if [[ ( -f "$TARGET/.vimrc" ) && ( "$(readlink "$TARGET/.vimrc")" == "$TARGET/.vim/vimrc") ]] ;then
+	echo "$TARGET/.vimrc allready right"
 else
-	echo "Need to install $TARGET/.vimrc"
-	if [ -e $TARGET/.vimrc ] ; then
-		rm $TARGET/.vimrc
+	echo "Need to create $TARGET/.vimrc => ${TARGET}/.vim/vimrc"
+	if [ -e "$TARGET/.vimrc" ] ; then
+		rm "$TARGET/.vimrc"
 	fi
 	cd && \
-	ln -s ${TARGET}/.vim/vimrc ${TARGET}/.vimrc
+	ln -s "${TARGET}/.vim/vimrc" "${TARGET}/.vimrc"
 fi
 
-if [ ! -d ${TARGET}/.config ]; then
-	mkdir ${TARGET}/.config
+if [ ! -d "${TARGET}/.config" ]; then
+	mkdir "${TARGET}/.config"
 fi
 
-if [ ! -e ${TARGET}/.config/nvim ]; then
-	ln -s $TARGET/.vim ${TARGET}/.config/nvim
+if [[ ( -e "${TARGET}/.config/nvim" ) && ( "$(readlink "${TARGET}/.config/nvim")" == "${TARGET}/.vim") ]] ;then
+	echo "${TARGET}/.config/nvim allready right"
+else
+	echo "Need to create $TARGET/.vim => ${TARGET}/.config/nvim"
+	ln -s "$TARGET/.vim" "${TARGET}/.config/nvim"
 fi
 
 if [ "$OSTYPE" = "linux-gnu" ]; then
-	which dpkg >/dev/null && dpkg -l ${VI_PACKAGE} | grep -qE "^ii[ ]+${VI_PACKAGE}[ ]+" || apt-get install - ${VI_PACKAGE}
+	command -v dpkg >/dev/null && dpkg -l ${VI_PACKAGE} | grep -qE "^ii[ ]+${VI_PACKAGE}[ ]+" || apt-get install - ${VI_PACKAGE}
 fi
 
-cd ~/ $TARGET/.vim
-bash install-venv-localpython.sh
+cd "$TARGET/.vim" || exit 1
+bash install-venv.sh
+
+# grep -qE 'local_run_python.*=.*1' ~/.vim/local.rc && \
+# 	"$TARGET/.vim/venv3/bin/pip" install flake8 pep8
 
 vim +PluginInstall +qall
 
-read
+echo "Press enter to finish"
+read -r
 
 reset

@@ -246,6 +246,7 @@ set langmenu=en_US.UTF-8    " sets the language of the menu (gvim)
 let $LANG = 'en_US'
 set number
 set hidden
+set updatetime=500
 
 set incsearch
 set ignorecase
@@ -265,12 +266,23 @@ filetype on
 filetype indent on
 filetype plugin on
 
+" Toggle signcolumn. Works on vim>=8.1 or NeoVim
+function! ToggleSignColumn()
+    if !exists("b:signcolumn_on") || b:signcolumn_on
+        set signcolumn=no
+        let b:signcolumn_on=0
+    else
+        set signcolumn=yes
+        let b:signcolumn_on=1
+    endif
+endfunction
+
 " So what, I can't type...
 nmap :W :w
 nmap :X :x
 nmap :Q :q
 nmap \q :nohlsearch<CR>
-nmap <Leader>l :setlocal number!<CR>
+nmap <Leader>l :setlocal number!<CR>:call ToggleSignColumn()<CR>
 nmap <Leader>o :set paste!<CR>
 nnoremap <Space> za
 

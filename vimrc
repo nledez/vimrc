@@ -63,6 +63,10 @@ Plugin 'VundleVim/Vundle.vim'
 " --------------------------------------------
 Plugin 'https://github.com/vim-airline/vim-airline.git'
 
+" Term
+" --------------------------------------------
+Plugin 'https://github.com/vimlab/split-term.vim.git'
+
 " Git
 " --------------------------------------------
 Plugin 'https://github.com/tpope/vim-fugitive.git'
